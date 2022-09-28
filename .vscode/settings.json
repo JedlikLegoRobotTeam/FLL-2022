@@ -3,5 +3,6 @@
 	"files.eol": "\n",
 	"debug.openDebug": "neverOpen",
 	"python.linting.enabled": true,
-	"python.languageServer": "Pylance"
+	"python.languageServer": "Pylance",
+	"ev3devBrowser.download.exclude": "{**/.*,LICENSE,README.md,*.png,todo.txt}"
 }

@@ -152,6 +152,7 @@ class FllRobot:
         red, green, blue = (0,0,0)
         while red + green + blue < 165:
             red, green, blue = szenzor.rgb()
+            print(red + green + blue)
         self.leftMotor.stop(Stop.HOLD)
         self.rightMotor.stop(Stop.HOLD)
 
