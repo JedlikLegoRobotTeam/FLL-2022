@@ -146,15 +146,16 @@ class FllRobot:
             self.leftMotor.stop(Stop.HOLD)
             self.rightMotor.stop(Stop.HOLD)
 
-    def goUntilWhite(self, speed, szenzor:ColorSensor):
+    def goUntilWhite(self, speed, szenzor:ColorSensor, stop = True):
         self.leftMotor.run(speed=speed)
         self.rightMotor.run(speed=speed)
         red, green, blue = (0,0,0)
         while red + green + blue < 165:
             red, green, blue = szenzor.rgb()
             print(red + green + blue)
-        self.leftMotor.stop(Stop.HOLD)
-        self.rightMotor.stop(Stop.HOLD)
+        if stop:
+            self.leftMotor.stop(Stop.HOLD)
+            self.rightMotor.stop(Stop.HOLD)
 
     def alignOnWhite(self, speed):
         self.leftMotor.run(speed=speed)
