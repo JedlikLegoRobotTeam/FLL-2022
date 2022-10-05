@@ -32,7 +32,7 @@ robot.moveLifter(speed=400, measure=0, wait=False)
 robot.aheadCm(distance=29, speed=500, stop=True) # Gyurcsótány; Brüsszel; Soros; Biden; Zelenszkij; MZP
 
 print()
-time.sleep(0.2)
+time.sleep(0.5)
 
 
 
