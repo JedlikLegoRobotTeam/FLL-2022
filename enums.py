@@ -9,4 +9,5 @@ class Conversion:
     cmToRotation = 20
     
 class Open:
-    pass
+    maximumOpen = 115
+    closing = 0
