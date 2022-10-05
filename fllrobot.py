@@ -60,6 +60,11 @@ class FllRobot:
             self.startError('GYRO (1) szenzor')
             return
         
+        try:
+            self.button = TouchSensor(Port.S4)
+        except:
+            self.startError('NYOMÓGOMB (4)')
+        
         self.stopWatch = StopWatch()
         self.startLog()        
         self.ready = True
@@ -328,3 +333,9 @@ class FllRobot:
                 self.rightMotor.stop()
                 self.leftMotor.stop()
                 break
+            
+    def changeProgram(self):
+        while True:
+            if self.button.pressed() == True:
+                break
+        #TODO megcsinálni

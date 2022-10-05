@@ -15,4 +15,4 @@ import time
 # Click "Open user guide" on the EV3 extension tab for more information.
 robot = FllRobot()
 feladatok = Feladat(robot)
-feladatok.elsoKor()
+feladatok.thirdLap()
