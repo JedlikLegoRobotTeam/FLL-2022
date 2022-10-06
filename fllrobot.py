@@ -334,8 +334,3 @@ class FllRobot:
                 self.leftMotor.stop()
                 break
             
-    def changeProgram(self):
-        while True:
-            if self.button.pressed() == True:
-                break
-        #TODO megcsinálni
