@@ -11,3 +11,4 @@ class Conversion:
 class Open:
     maximumOpen = 115
     closing = 0
+    halfOpen = 50

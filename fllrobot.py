@@ -188,6 +188,7 @@ class FllRobot:
 
     def moveGrab(self, speed, measure, wait=True):
         print(self.grabMotor.angle())
+        self.grabMotor.stop()
         self.grabMotor.run_target(speed=speed, target_angle=measure, then=Stop.HOLD, wait=wait)
 
     def moveLifter(self, speed, measure, wait=True):
