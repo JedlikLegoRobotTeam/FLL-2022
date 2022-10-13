@@ -15,36 +15,38 @@ class Feladat:
         self.robot = fllRobot
     
     def firstLap(self):
+        self.robot.log('Starting 1st lap')
         self.robot.aheadCm(-35, 600, False)
         self.robot.aheadCm(-5, 250, True)
         self.robot.moveLifter(100, Lift.maximum, False)
         self.robot.moveGrab(300, 80, True)
         self.robot.rightOneWheel(Side.left, 800, 135)
         self.robot.aheadCm(9.5, 800, False)
-        self.robot.rightOneWheel(Side.left, 800, 100)
+        self.robot.rightOneWheel(Side.left, 800, 95)
         self.robot.aheadCm(5, 800, False)
-        self.robot.aheadCm(7, 300, True)
+        self.robot.aheadCm(2.75, 300, True)
         self.robot.ev3.speaker.beep()
         time.sleep(0.5)
         self.robot.aheadCm(-7, 400, True)
-        self.robot.aheadCm(9, 400, True)
+        self.robot.aheadCm(6, 400, True)
         time.sleep(0.5)
         self.robot.aheadCm(-7, 400, True)
-        self.robot.aheadCm(9, 400, True)
+        self.robot.aheadCm(7.5, 400, True)
         time.sleep(0.5)
         self.robot.aheadCm(-7, 400, True)
-        self.robot.aheadCm(9, 400, True)
+        self.robot.aheadCm(7.5, 400, True)
         time.sleep(0.5)
         self.robot.aheadCm(-15, 800, True)
         self.robot.moveLifter(100, 40, False)
-        self.robot.moveGrab(200, Open.carGrab, False)
-        self.robot.leftTwoWheel(800, 100)
-        self.robot.aheadCm(7.5, 600, True)
+        self.robot.moveGrab(200, Open.carGrab - 5, False)
+        self.robot.leftTwoWheel(800, 90)
+        self.robot.aheadCm(14, 600, True)
         self.robot.grabMotor.run(-200)
         time.sleep(1)
         self.robot.aheadCm(-25, 800, False)
-        self.robot.rightOneWheel(Side.right, 800, 35)
+        self.robot.rightOneWheel(Side.right, 800, 25)
         self.robot.aheadCm(-50, 800, False)
+
         
     
     def secondLap(self):
@@ -52,10 +54,10 @@ class Feladat:
         self.robot.grabMotor.run(200)
         time.sleep(0.5)
         self.robot.grabMotor.stop()
-        self.robot.changeProgram()
         self.robot.ev3.speaker.beep()
-        self.robot.grabMotor.run(-200)
         time.sleep(3.5)
+        self.robot.grabMotor.run(-200)
+        time.sleep(1)
         self.robot.moveLifter(200, Lift.maximum, False)
         self.robot.aheadCm(54, 800, False)
         self.robot.leftOneWheel(Side.right, 800, 90)
@@ -72,8 +74,10 @@ class Feladat:
         # self.robot.aheadCm(-10, 800, False)
         self.robot.rightOneWheel(Side.right, 800, 125)
         self.robot.aheadCm(-100, 800, False)
-    
+
+        
     def thirdLap(self):
+        self.robot.log('Starting 3rd lap')
         self.robot.moveLifter(800, Lift.maximum, True)
         self.robot.aheadCm(75, 800, False)
         self.robot.goUntilBlack(800, self.robot.rightSensor, False)
@@ -104,8 +108,8 @@ class Feladat:
         self.robot.rightTwoWheel(800,125)
         self.robot.aheadCm(-30, 800, False)
         self.robot.leftOneWheel(Side.left, 800, 45)
-        self.robot.aheadCm(-70, 800, True)
-    
+        self.robot.aheadCm(-70, 800, False)
+
     def startProgramOnPress(self, nextProgram):
         while True:
             if self.robot.button.pressed():
