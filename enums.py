@@ -10,3 +10,7 @@ class Conversion:
     
 class Open:
     carGrab = 35
+
+class Programs:
+    programs = ["Elso kör", "Második kör", "Harmadik kör"]
+    # fourthRound = 3

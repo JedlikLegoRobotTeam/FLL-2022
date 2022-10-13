@@ -16,4 +16,5 @@ import time
 robot = FllRobot()
 feladatok = Feladat(robot)
 robot.ev3.speaker.beep()
-feladatok.startProgramOnPress(feladatok.firstLap)
+while True:
+    feladatok.startProgramOnPress(feladatok.menu())

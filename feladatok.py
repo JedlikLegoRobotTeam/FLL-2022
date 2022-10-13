@@ -37,15 +37,18 @@ class Feladat:
         self.robot.aheadCm(7.5, 400, True)
         time.sleep(0.5)
         self.robot.aheadCm(-15, 800, True)
-        self.robot.moveLifter(100, 40, False)
+        self.robot.moveLifter(100, Lift.carLift, False)
         self.robot.moveGrab(200, Open.carGrab - 5, False)
         self.robot.leftTwoWheel(800, 90)
         self.robot.aheadCm(14, 600, True)
         self.robot.grabMotor.run(-200)
         time.sleep(1)
-        self.robot.aheadCm(-25, 800, False)
-        self.robot.rightOneWheel(Side.right, 800, 25)
-        self.robot.aheadCm(-50, 800, False)
+        self.robot.moveLifter(200, Lift.carLift + 10, True)
+        self.robot.aheadCm(-10, 800, True)
+        self.robot.rightTwoWheel(800, 250)
+        # self.robot.aheadCm(15, 800, False)
+        # self.robot.rightOneWheel(Side.right, 800, 25)
+        self.robot.aheadCm(80, 800, True)
 
         
     
@@ -110,9 +113,33 @@ class Feladat:
         self.robot.leftOneWheel(Side.left, 800, 45)
         self.robot.aheadCm(-70, 800, False)
 
-    def startProgramOnPress(self, nextProgram):
+    def startProgramOnPress(self, nextProgramNumber):
         while True:
             if self.robot.button.pressed():
                 break
-        nextProgram()
+        if nextProgramNumber == 0:
+            self.firstLap()
+        elif nextProgramNumber == 1:
+            self.secondLap()
+        elif nextProgramNumber == 2:
+            self.thirdLap
     # def dinoToTheOtherSide(self)
+
+
+
+    def menu(self):
+        program = 0
+        self.robot.ev3.screen.print(Programs.programs[program])
+        while True:
+            if Button.DOWN in self.robot.ev3.buttons.pressed():
+                program = 0 if program >= 2 else program + 1
+                self.robot.ev3.screen.clear()
+                self.robot.ev3.screen.print(Programs.programs[program])
+                time.sleep(0.5)
+            elif Button.UP in self.robot.ev3.buttons.pressed():
+                program = 0 if program >= 2 else program - 1
+                self.robot.ev3.screen.clear()
+                self.robot.ev3.screen.print(Programs.programs[program])
+                time.sleep(0.5)
+            if Button.CENTER in self.robot.ev3.buttons.pressed():
+                return program
