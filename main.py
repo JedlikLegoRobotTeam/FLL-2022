@@ -1,4 +1,6 @@
 #!/usr/bin/env pybricks-micropython
+from dis import dis
+from re import S
 from pybricks.hubs import EV3Brick
 from pybricks.ev3devices import (Motor, TouchSensor, ColorSensor,
                                  InfraredSensor, UltrasonicSensor, GyroSensor)
@@ -10,8 +12,6 @@ from fllrobot import *
 import time
 
 robot = FllRobot()
-# This program requires LEGO EV3 MicroPython v2.0 or higher.
-# Click "Open user guide" on the EV3 extension tab for more information.
 # robot.moveLifter(speed=400, measure=5, wait=True)
 # robot.aheadCm(distance=70, speed=700, stop=False)
 # robot.goUntilWhite(speed=300, szenzor=robot.leftSensor)
@@ -40,12 +40,10 @@ robot = FllRobot()
 # robot.aheadCm(distance=-2, speed=600, stop=True)
 # time.sleep(0.4)
 # robot.rightTwoWheel(speed=300, angle=120)
-robot.alignOnBlack(speed=200) #EZT TÖRÖLD KI
+# # cuccok bedobasa a konténerbe
+robot.alignOnBlack(speed=200) 
 robot.moveGrab(speed=300, measure=Open.maximumOpen, wait=True)
-# robot.moveLifter(speed=400, measure=Lift.maximum, wait=True)
-# robot.alignOnWall(seconds=2.5, speed=400)
 robot.aheadCm(distance=10, speed=600, stop=True)
-# robot.moveLifter(speed=300, measure=2, wait=True)
 robot.moveGrab(speed=300, measure=Open.closing, wait=True)
 robot.moveLifter(speed=300, measure=Lift.maximum, wait=True)
 robot.alignOnWall(seconds=1.5, speed=300)
@@ -72,26 +70,38 @@ robot.aheadCm(distance=15, speed=600, stop=True)
 robot.moveGrab(speed=300, measure=Open.maximumOpen, wait=True)
 robot.aheadCm(distance=-5, speed=200, stop=True)
 
-# pumpálás
+# # pumpálás
 robot.leftTwoWheel(speed=300, angle=95)
 robot.moveGrab(speed=400, measure=Open.maximumOpen, wait=True)
 robot.aheadCm(distance=12, speed=400, stop=True)
 robot.alignOnWhite(speed=300)
 robot.aheadCm(distance=3, speed=400, stop=True)
-robot.rightTwoWheel(speed=300)
+robot.rightTwoWheel(speed=300, angle=91)
 robot.moveLifter(speed=300, measure=83, wait=True)
 robot.aheadCm(distance=22, speed=400, stop=True)
 robot.goUntilWhite(speed=300, szenzor=robot.leftSensor, stop=True)
-# robot.moveGrab(speed=300, measure=-1, wait=True)
-# time.sleep(0.3)                                           PUMPÁLÁST MEGOLDANI
-# robot.aheadCm(distance=4, speed=400, stop=True)
-# robot.aheadCm(distance=-4, speed=400, stop=True)
-# robot.moveGrab(speed=300, measure=-1, wait=True)
-# robot.aheadCm(distance=4, speed=400, stop=True)
-# robot.aheadCm(distance=-4, speed=400, stop=True)
-# robot.moveGrab(speed=300, measure=-1, wait=True)
-# robot.aheadCm(distance=4, speed=400, stop=True)
-# robot.aheadCm(distance=-4, speed=400, stop=True)
+robot.aheadCm(distance=-4.5, speed=400, stop=True)
+robot.moveLifter(speed=300, measure=0, wait=True)
+robot.moveGrab(speed=300, measure=18, wait=True)
+robot.moveLifter(speed=200, measure=60, wait=True)
+robot.moveLifter(speed=200, measure=0, wait=True)
+robot.moveLifter(speed=200, measure=60, wait=True)
+robot.moveLifter(speed=200, measure=0, wait=True)
+robot.moveLifter(speed=200, measure=60, wait=True)
+robot.moveLifter(speed=200, measure=0, wait=True)
+robot.moveLifter(speed=200, measure=60, wait=True)
+robot.moveLifter(speed=200, measure=0, wait=True)
+
+# # tálca kihúzás
+robot.aheadCm(distance=-10, speed=500, stop=True)
+robot.moveLifter(speed=300, measure=Lift.maximum, wait=True)
+robot.moveGrab(speed=300, measure=Open.maximumOpen, wait=True)
+robot.aheadCm(distance=10, speed=500, stop=True)
+robot.rightTwoWheel(speed=400)   # TESZTELNI TESZTELNI TESZTELNI TESZTELNI
+robot.aheadCm(distance=-8, speed=500, stop=True)
+robot.moveLifter(speed=300, measure=0, wait=True)
+robot.aheadCm(distance=15, speed=500, stop=True)
+robot.moveGrab(speed=400, measure=Open.closing, wait=True)
 
 sys.exit()
 # robot.leftOneWheel(wheel=Side.right, speed=400, angle=50)
