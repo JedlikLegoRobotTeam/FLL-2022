@@ -1,6 +1,4 @@
 #!/usr/bin/env pybricks-micropython
-from dis import dis
-from re import S
 from pybricks.hubs import EV3Brick
 from pybricks.ev3devices import (Motor, TouchSensor, ColorSensor,
                                  InfraredSensor, UltrasonicSensor, GyroSensor)
@@ -96,12 +94,16 @@ robot.moveLifter(speed=200, measure=0, wait=True)
 robot.aheadCm(distance=-10, speed=500, stop=True)
 robot.moveLifter(speed=300, measure=Lift.maximum, wait=True)
 robot.moveGrab(speed=300, measure=Open.maximumOpen, wait=True)
-robot.aheadCm(distance=10, speed=500, stop=True)
-robot.rightTwoWheel(speed=400)   # TESZTELNI TESZTELNI TESZTELNI TESZTELNI
-robot.aheadCm(distance=-8, speed=500, stop=True)
+robot.aheadCm(distance=22, speed=500, stop=True)
+robot.rightTwoWheel(speed=400) 
+time.sleep(0.3)  #                                          GYORSÍTÁS
+robot.aheadCm(distance=-10, speed=500, stop=True)
 robot.moveLifter(speed=300, measure=0, wait=True)
-robot.aheadCm(distance=15, speed=500, stop=True)
+robot.aheadCm(distance=4, speed=500, stop=True)
 robot.moveGrab(speed=400, measure=Open.closing, wait=True)
+robot.aheadCm(distance=-20, speed=400, stop=True)
+robot.leftOneWheel(wheel=Side.right, speed=300, angle=-50)
+robot.aheadCm(distance=-50, speed=500, stop=True)
 
 sys.exit()
 # robot.leftOneWheel(wheel=Side.right, speed=400, angle=50)
