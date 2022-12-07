@@ -52,14 +52,12 @@ class FllRobot:
             self.startError('Bal LE (2) szenzor')
             return
         
-        try:
-            self.gyroSensor = GyroSensor(Port.S1)
-            self.gyroSensor.reset_angle(0)
-            # r,g,b,w = self.balOldalSzenzor.rgbw()
+        try: 
+            self.touchSensor = TouchSensor(Port.S4)
         except:
-            self.startError('GYRO (1) szenzor')
+            self.startError('Touch (4) szenzor')
             return
-        
+
         self.stopWatch = StopWatch()
         self.startLog()        
         self.ready = True
