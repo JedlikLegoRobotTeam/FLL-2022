@@ -57,7 +57,6 @@ class FllRobot:
         except:
             self.startError('Touch (4) szenzor')
             return
-
         self.stopWatch = StopWatch()
         self.startLog()        
         self.ready = True
@@ -329,3 +328,4 @@ class FllRobot:
                 self.rightMotor.stop()
                 self.leftMotor.stop()
                 break
+            

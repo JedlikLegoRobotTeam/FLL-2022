@@ -13,17 +13,6 @@ import time
 robot = FllRobot()
 feladatok = Feladat(robot)
 
-feladatok.firstTask()
-feladatok.secondTask()
-feladatok.thirdTask()
-feladatok.fourthTask()
-feladatok.fifthTask()
-
-sys.exit()
-# robot.leftOneWheel(wheel=Side.right, speed=400, angle=50)
-# robot.leftOneWheel(wheel=Side.right, speed=400, angle=90)
-# robot.aheadCm(distance=55, speed=500, stop=True) 
-# Gyurcsótány; Brüsszel; Soros; Biden; Zelenszkij; MZP
-# Csak a Ferrari, next year will be our year!44!!!!
-
-                                               # KŐ KALIB BAKKER
+robot.ev3.speaker.beep()
+while True:
+    feladatok.startProgramOnPress(feladatok.menu())
