@@ -52,19 +52,11 @@ class FllRobot:
             self.startError('Bal LE (2) szenzor')
             return
         
-        try:
-            self.gyroSensor = GyroSensor(Port.S1)
-            self.gyroSensor.reset_angle(0)
-            # r,g,b,w = self.balOldalSzenzor.rgbw()
+        try: 
+            self.touchSensor = TouchSensor(Port.S4)
         except:
-            self.startError('GYRO (1) szenzor')
+            self.startError('Touch (4) szenzor')
             return
-        
-        try:
-            self.button = TouchSensor(Port.S4)
-        except:
-            self.startError('NYOMÓGOMB (4)')
-        
         self.stopWatch = StopWatch()
         self.startLog()        
         self.ready = True
@@ -151,14 +143,16 @@ class FllRobot:
             self.leftMotor.stop(Stop.HOLD)
             self.rightMotor.stop(Stop.HOLD)
 
-    def goUntilWhite(self, speed, szenzor:ColorSensor):
+    def goUntilWhite(self, speed, szenzor:ColorSensor, stop = True):
         self.leftMotor.run(speed=speed)
         self.rightMotor.run(speed=speed)
         red, green, blue = (0,0,0)
         while red + green + blue < 165:
             red, green, blue = szenzor.rgb()
-        self.leftMotor.stop(Stop.HOLD)
-        self.rightMotor.stop(Stop.HOLD)
+            print(red + green + blue)
+        if stop:
+            self.leftMotor.stop(Stop.HOLD)
+            self.rightMotor.stop(Stop.HOLD)
 
     def alignOnWhite(self, speed):
         self.leftMotor.run(speed=speed)
@@ -191,6 +185,7 @@ class FllRobot:
 
     def moveGrab(self, speed, measure, wait=True):
         print(self.grabMotor.angle())
+        self.grabMotor.stop()
         self.grabMotor.run_target(speed=speed, target_angle=measure, then=Stop.HOLD, wait=wait)
 
     def moveLifter(self, speed, measure, wait=True):

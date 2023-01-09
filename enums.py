@@ -9,6 +9,9 @@ class Conversion:
     cmToRotation = 20
     
 class Open:
+    maximumOpen = 115
+    closing = 0
+    halfOpen = 50
     carGrab = 35
 
 class Programs:
