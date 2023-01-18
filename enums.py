@@ -3,7 +3,7 @@ class Side:
     right = 1
     
 class Lift:
-    maximum = 140
+    maximum = 130
     carLift = 40
 class Conversion:
     cmToRotation = 20
@@ -15,5 +15,5 @@ class Open:
     carGrab = 35
 
 class Programs:
-    programs = ["Elso kör", "Második kör", "Harmadik kör"]
+    programs = ["Elso kör", "Második kör", "Harmadik kör", "Negyedik kör", "Dínó átvitel"]
     # fourthRound = 3

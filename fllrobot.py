@@ -53,7 +53,7 @@ class FllRobot:
             return
         
         try: 
-            self.touchSensor = TouchSensor(Port.S4)
+            self.button = TouchSensor(Port.S4)
         except:
             self.startError('Touch (4) szenzor')
             return
@@ -149,7 +149,6 @@ class FllRobot:
         red, green, blue = (0,0,0)
         while red + green + blue < 165:
             red, green, blue = szenzor.rgb()
-            print(red + green + blue)
         if stop:
             self.leftMotor.stop(Stop.HOLD)
             self.rightMotor.stop(Stop.HOLD)
@@ -184,7 +183,6 @@ class FllRobot:
         # time.sleep(0.2)
 
     def moveGrab(self, speed, measure, wait=True):
-        print(self.grabMotor.angle())
         self.grabMotor.stop()
         self.grabMotor.run_target(speed=speed, target_angle=measure, then=Stop.HOLD, wait=wait)
 
@@ -328,4 +326,11 @@ class FllRobot:
                 self.rightMotor.stop()
                 self.leftMotor.stop()
                 break
-            
+    
+                
+    def aheadForXSec(self, time_, speed):
+        self.leftMotor.run(speed)
+        self.rightMotor.run(speed)
+        time.sleep(time_)
+        self.leftMotor.stop()
+        self.rightMotor.stop()
