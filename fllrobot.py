@@ -189,6 +189,9 @@ class FllRobot:
     def moveLifter(self, speed, measure, wait=True):
         self.liftingMotor.run_target(speed = speed, target_angle = measure, wait = wait)
     
+    def moveLifterForTime(self, speed, seconds):
+        self.liftingMotor.run_time(speed=speed, time = seconds * 1000, then=Stop.HOLD, wait = True)
+
     def alignOnWall(self, seconds, speed=-300):
         self.leftMotor.run_time(speed=speed, time=seconds*1000, then=Stop.HOLD, wait=False)
         self.rightMotor.run_time(speed=speed, time=seconds*1000, then=Stop.HOLD, wait=True)
